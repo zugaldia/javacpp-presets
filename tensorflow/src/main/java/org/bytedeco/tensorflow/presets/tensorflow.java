@@ -278,7 +278,7 @@ import java.util.List;
                            "api-ms-win-core-sysinfo-l1-1-0", "api-ms-win-core-synch-l1-2-0", "api-ms-win-core-console-l1-1-0", "api-ms-win-core-debug-l1-1-0",
                            "api-ms-win-core-rtlsupport-l1-1-0", "api-ms-win-core-processthreads-l1-1-1", "api-ms-win-core-file-l1-2-0", "api-ms-win-core-profile-l1-1-0",
                            "api-ms-win-core-memory-l1-1-0", "api-ms-win-core-util-l1-1-0", "api-ms-win-core-interlocked-l1-1-0", "ucrtbase",
-                           "msvcr120", "libiomp5md", "mklml", "vcruntime140", "msvcp140", "concrt140", "vcomp140", "python37"}),
+                           "msvcr120", "libiomp5md", "mklml", "vcruntime140", "msvcp140", "concrt140", "vcomp140", "python38"}),
         @Platform(
                 value = "windows-x86",
                 preloadpath = {"C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/redist/x86/Microsoft.VC140.CRT/",

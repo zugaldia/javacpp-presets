@@ -47,10 +47,10 @@ case $PLATFORM in
     linux-armhf)
         # setup.py won't pick up the right libgfortran.so without this
         export LD_LIBRARY_PATH="$OPENBLAS_PATH/lib/:$CPYTHON_PATH/lib/"
-        export PYTHONPATH="$INSTALL_PATH/lib/python3.7/site-packages/"
+        export PYTHONPATH="$INSTALL_PATH/lib/python3.8/site-packages/"
         mkdir -p "$PYTHONPATH"
-        "$CPYTHON_HOST_PATH/bin/python3.7" -m pip install --target="$CPYTHON_HOST_PATH/lib/python3.7/" crossenv
-        "$CPYTHON_HOST_PATH/bin/python3.7" -m crossenv "$CPYTHON_PATH/bin/python3.7" crossenv
+        "$CPYTHON_HOST_PATH/bin/python3.8" -m pip install --target="$CPYTHON_HOST_PATH/lib/python3.8/" crossenv
+        "$CPYTHON_HOST_PATH/bin/python3.8" -m crossenv "$CPYTHON_PATH/bin/python3.8" crossenv
         source crossenv/bin/activate
         ATLAS=None CC="arm-linux-gnueabihf-gcc -std=c99 -march=armv6 -mfpu=vfp -mfloat-abi=hard" python setup.py --quiet build -j $MAKEJ build_ext -I$CPYTHON_PATH/include/ -L$CPYTHON_PATH/lib/ install --prefix $INSTALL_PATH
         arm-linux-gnueabihf-strip $(find ../ -iname *.so)
@@ -58,10 +58,10 @@ case $PLATFORM in
     linux-arm64)
         # setup.py won't pick up the right libgfortran.so without this
         export LD_LIBRARY_PATH="$OPENBLAS_PATH/lib/:$CPYTHON_PATH/lib/"
-        export PYTHONPATH="$INSTALL_PATH/lib/python3.7/site-packages/"
+        export PYTHONPATH="$INSTALL_PATH/lib/python3.8/site-packages/"
         mkdir -p "$PYTHONPATH"
-        "$CPYTHON_HOST_PATH/bin/python3.7" -m pip install --target="$CPYTHON_HOST_PATH/lib/python3.7/" crossenv
-        "$CPYTHON_HOST_PATH/bin/python3.7" -m crossenv "$CPYTHON_PATH/bin/python3.7" crossenv
+        "$CPYTHON_HOST_PATH/bin/python3.8" -m pip install --target="$CPYTHON_HOST_PATH/lib/python3.8/" crossenv
+        "$CPYTHON_HOST_PATH/bin/python3.8" -m crossenv "$CPYTHON_PATH/bin/python3.8" crossenv
         source crossenv/bin/activate
         ATLAS=None CC="aarch64-linux-gnu-gcc -mabi=lp64" python setup.py --quiet build -j $MAKEJ build_ext -I$CPYTHON_PATH/include/ -L$CPYTHON_PATH/lib/ install --prefix $INSTALL_PATH
         aarch64-linux-gnu-strip $(find ../ -iname *.so)
@@ -69,10 +69,10 @@ case $PLATFORM in
     linux-ppc64le)
         # setup.py won't pick up the right libgfortran.so without this
         export LD_LIBRARY_PATH="$OPENBLAS_PATH/lib/:$CPYTHON_PATH/lib/"
-        export PYTHONPATH="$INSTALL_PATH/lib/python3.7/site-packages/"
+        export PYTHONPATH="$INSTALL_PATH/lib/python3.8/site-packages/"
         mkdir -p "$PYTHONPATH"
-        "$CPYTHON_HOST_PATH/bin/python3.7" -m pip install --target="$CPYTHON_HOST_PATH/lib/python3.7/" crossenv
-        "$CPYTHON_HOST_PATH/bin/python3.7" -m crossenv "$CPYTHON_PATH/bin/python3.7" crossenv
+        "$CPYTHON_HOST_PATH/bin/python3.8" -m pip install --target="$CPYTHON_HOST_PATH/lib/python3.8/" crossenv
+        "$CPYTHON_HOST_PATH/bin/python3.8" -m crossenv "$CPYTHON_PATH/bin/python3.8" crossenv
         source crossenv/bin/activate
         ATLAS=None CC="powerpc64le-linux-gnu-gcc -m64" python setup.py --quiet build -j $MAKEJ build_ext -I$CPYTHON_PATH/include/ -L$CPYTHON_PATH/lib/ install --prefix $INSTALL_PATH
         powerpc64le-linux-gnu-strip $(find ../ -iname *.so)
@@ -80,27 +80,27 @@ case $PLATFORM in
     linux-x86)
         # setup.py won't pick up the right libgfortran.so without this
         export LD_LIBRARY_PATH="$OPENBLAS_PATH/lib/:$CPYTHON_PATH/lib/"
-        export PYTHONPATH="$INSTALL_PATH/lib/python3.7/site-packages/"
+        export PYTHONPATH="$INSTALL_PATH/lib/python3.8/site-packages/"
         mkdir -p "$PYTHONPATH"
-        chmod +x "$CPYTHON_PATH/bin/python3.7"
-        ATLAS=None CC="gcc -m32" "$CPYTHON_PATH/bin/python3.7" setup.py --quiet build -j $MAKEJ build_ext -I$CPYTHON_PATH/include/ -L$CPYTHON_PATH/lib/ install --prefix $INSTALL_PATH
+        chmod +x "$CPYTHON_PATH/bin/python3.8"
+        ATLAS=None CC="gcc -m32" "$CPYTHON_PATH/bin/python3.8" setup.py --quiet build -j $MAKEJ build_ext -I$CPYTHON_PATH/include/ -L$CPYTHON_PATH/lib/ install --prefix $INSTALL_PATH
         strip $(find ../ -iname *.so)
         ;;
     linux-x86_64)
         # setup.py  won't pick up the right libgfortran.so without this
         export LD_LIBRARY_PATH="$OPENBLAS_PATH/lib/:$CPYTHON_PATH/lib/"
-        export PYTHONPATH="$INSTALL_PATH/lib/python3.7/site-packages/"
+        export PYTHONPATH="$INSTALL_PATH/lib/python3.8/site-packages/"
         mkdir -p "$PYTHONPATH"
-        chmod +x "$CPYTHON_PATH/bin/python3.7"
-        ATLAS=None CC="gcc -m64" "$CPYTHON_PATH/bin/python3.7" setup.py --quiet build -j $MAKEJ build_ext -I$CPYTHON_PATH/include/ -L$CPYTHON_PATH/lib/ install --prefix $INSTALL_PATH
+        chmod +x "$CPYTHON_PATH/bin/python3.8"
+        ATLAS=None CC="gcc -m64" "$CPYTHON_PATH/bin/python3.8" setup.py --quiet build -j $MAKEJ build_ext -I$CPYTHON_PATH/include/ -L$CPYTHON_PATH/lib/ install --prefix $INSTALL_PATH
         strip $(find ../ -iname *.so)
         ;;
     macosx-*)
         export LD_LIBRARY_PATH="$OPENBLAS_PATH/lib/:$CPYTHON_PATH/lib/"
-        export PYTHONPATH="$INSTALL_PATH/lib/python3.7/site-packages/"
+        export PYTHONPATH="$INSTALL_PATH/lib/python3.8/site-packages/"
         mkdir -p "$PYTHONPATH"
-        chmod +x "$CPYTHON_PATH/bin/python3.7"
-        ATLAS=None "$CPYTHON_PATH/bin/python3.7" setup.py --quiet build -j $MAKEJ build_ext -I$CPYTHON_PATH/include/ -L$CPYTHON_PATH/lib/ install --prefix $INSTALL_PATH
+        chmod +x "$CPYTHON_PATH/bin/python3.8"
+        ATLAS=None "$CPYTHON_PATH/bin/python3.8" setup.py --quiet build -j $MAKEJ build_ext -I$CPYTHON_PATH/include/ -L$CPYTHON_PATH/lib/ install --prefix $INSTALL_PATH
         # need to add RPATH so it can find MKL in cache
         for f in $(find ../ -iname *.so); do install_name_tool -add_rpath @loader_path/../../../ $f; done
         ;;
