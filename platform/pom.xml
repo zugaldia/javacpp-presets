@@ -43,6 +43,7 @@
     <module>../scipy/platform</module>
     <module>../gym/platform</module>
     <module>../llvm/platform</module>
+    <module>../liboqs/platform</module>
     <module>../libpostal/platform</module>
     <module>../leptonica/platform</module>
     <module>../tesseract/platform</module>
@@ -208,6 +209,11 @@
       <groupId>org.bytedeco</groupId>
       <artifactId>llvm-platform</artifactId>
       <version>9.0.1-${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.bytedeco</groupId>
+      <artifactId>liboqs-platform</artifactId>
+      <version>0.2.0-${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.bytedeco</groupId>
