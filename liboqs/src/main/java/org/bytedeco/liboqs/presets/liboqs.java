@@ -15,7 +15,8 @@ import org.bytedeco.javacpp.tools.*;
                 "macosx-x86_64",
                 "windows-x86",
                 "windows-x86_64"},
-            // Order here is important, otherwise we can hit a "illegal forward reference" error.
+            // Order here is important, otherwise we can hit an "illegal forward reference" error.
+            // Removed two header files listed Makefile.am not included by default.
             // Refs: https://github.com/open-quantum-safe/liboqs/blob/master/Makefile.am
             include = {
                 "oqs/oqs.h",
