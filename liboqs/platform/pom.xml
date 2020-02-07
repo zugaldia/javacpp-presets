@@ -22,39 +22,45 @@
 
     <dependencies>
         <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>${javacpp.moduleId}</artifactId>
-            <version>${project.version}</version>
+          <groupId>${project.groupId}</groupId>
+          <artifactId>${javacpp.moduleId}</artifactId>
+          <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>${javacpp.moduleId}</artifactId>
-            <version>${project.version}</version>
-            <classifier>${javacpp.platform.linux-x86}</classifier>
+          <groupId>${project.groupId}</groupId>
+          <artifactId>${javacpp.moduleId}</artifactId>
+          <version>${project.version}</version>
+          <classifier>${javacpp.platform.android-arm}</classifier>
         </dependency>
         <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>${javacpp.moduleId}</artifactId>
-            <version>${project.version}</version>
-            <classifier>${javacpp.platform.linux-x86_64}</classifier>
+          <groupId>${project.groupId}</groupId>
+          <artifactId>${javacpp.moduleId}</artifactId>
+          <version>${project.version}</version>
+          <classifier>${javacpp.platform.android-arm64}</classifier>
         </dependency>
         <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>${javacpp.moduleId}</artifactId>
-            <version>${project.version}</version>
-            <classifier>${javacpp.platform.macosx-x86_64}</classifier>
+          <groupId>${project.groupId}</groupId>
+          <artifactId>${javacpp.moduleId}</artifactId>
+          <version>${project.version}</version>
+          <classifier>${javacpp.platform.android-x86}</classifier>
         </dependency>
         <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>${javacpp.moduleId}</artifactId>
-            <version>${project.version}</version>
-            <classifier>${javacpp.platform.windows-x86}</classifier>
+          <groupId>${project.groupId}</groupId>
+          <artifactId>${javacpp.moduleId}</artifactId>
+          <version>${project.version}</version>
+          <classifier>${javacpp.platform.android-x86_64}</classifier>
         </dependency>
         <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>${javacpp.moduleId}</artifactId>
-            <version>${project.version}</version>
-            <classifier>${javacpp.platform.windows-x86_64}</classifier>
+          <groupId>${project.groupId}</groupId>
+          <artifactId>${javacpp.moduleId}</artifactId>
+          <version>${project.version}</version>
+          <classifier>${javacpp.platform.linux-x86}</classifier>
+        </dependency>
+        <dependency>
+          <groupId>${project.groupId}</groupId>
+          <artifactId>${javacpp.moduleId}</artifactId>
+          <version>${project.version}</version>
+          <classifier>${javacpp.platform.linux-x86_64}</classifier>
         </dependency>
     </dependencies>
 
@@ -68,7 +74,7 @@
                         <configuration>
                             <archive>
                                 <manifestEntries>
-                                    <Class-Path>${javacpp.moduleId}.jar ${javacpp.moduleId}-linux-x86.jar ${javacpp.moduleId}-linux-x86_64.jar ${javacpp.moduleId}-macosx-x86_64.jar ${javacpp.moduleId}-windows-x86.jar ${javacpp.moduleId}-windows-x86_64.jar</Class-Path>
+                                    <Class-Path>${javacpp.moduleId}.jar ${javacpp.moduleId}-android-arm.jar ${javacpp.moduleId}-android-arm64.jar ${javacpp.moduleId}-android-x86.jar ${javacpp.moduleId}-android-x86_64.jar ${javacpp.moduleId}-linux-x86.jar ${javacpp.moduleId}-linux-x86_64.jar</Class-Path>
                                 </manifestEntries>
                             </archive>
                         </configuration>
@@ -113,11 +119,12 @@
                                     <file>${project.build.directory}/${project.artifactId}.jar</file>
                                     <moduleInfoSource>
                                         module org.bytedeco.${javacpp.moduleId}.platform {
-                                        requires org.bytedeco.${javacpp.moduleId}.linux.x86;
-                                        requires org.bytedeco.${javacpp.moduleId}.linux.x86_64;
-                                        requires org.bytedeco.${javacpp.moduleId}.macosx.x86_64;
-                                        requires org.bytedeco.${javacpp.moduleId}.windows.x86;
-                                        requires org.bytedeco.${javacpp.moduleId}.windows.x86_64;
+                                          requires org.bytedeco.${javacpp.moduleId}.android.arm;
+                                          requires org.bytedeco.${javacpp.moduleId}.android.arm64;
+                                          requires org.bytedeco.${javacpp.moduleId}.android.x86;
+                                          requires org.bytedeco.${javacpp.moduleId}.android.x86_64;
+                                          requires org.bytedeco.${javacpp.moduleId}.linux.x86;
+                                          requires org.bytedeco.${javacpp.moduleId}.linux.x86_64;
                                         }
                                     </moduleInfoSource>
                                 </module>

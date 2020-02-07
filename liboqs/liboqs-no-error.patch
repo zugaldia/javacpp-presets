@@ -1,0 +1,13 @@
+diff --git a/config/flags.m4 b/config/flags.m4
+index 87e2612..b259f1b 100644
+--- a/config/flags.m4
++++ b/config/flags.m4
+@@ -4,7 +4,7 @@ AC_DEFUN([SET_AM_CFLAGS],
+   AM_CFLAGS=${AM_CFLAGS}" -std=gnu11"
+ 
+   # Basic set of errors
+-  AM_CFLAGS=${AM_CFLAGS}" -Wall -Wextra -Werror "
++  AM_CFLAGS=${AM_CFLAGS}" -Wall -Wextra -Wno-error "
+   
+   #TODO: undisabled
+   #AM_CFLAGS=${AM_CFLAGS}" -Wpedantic -Wcast-qual "

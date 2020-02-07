@@ -756,6 +756,7 @@
         <module>fftw</module>
         <module>gsl</module>
         <module>leptonica</module>
+        <module>liboqs</module>
         <module>tesseract</module>
         <module>tensorflow</module>
         <module>cpu_features</module>
@@ -803,6 +804,7 @@
         <module>fftw</module>
         <module>gsl</module>
         <module>leptonica</module>
+        <module>liboqs</module>
         <module>tesseract</module>
         <module>tensorflow</module>
         <module>cpu_features</module>
@@ -850,6 +852,7 @@
         <module>fftw</module>
         <module>gsl</module>
         <module>leptonica</module>
+        <module>liboqs</module>
         <module>tesseract</module>
         <module>tensorflow</module>
         <module>cpu_features</module>
@@ -897,6 +900,7 @@
         <module>fftw</module>
         <module>gsl</module>
         <module>leptonica</module>
+        <module>liboqs</module>
         <module>tesseract</module>
         <module>tensorflow</module>
         <module>cpu_features</module>
@@ -1394,7 +1398,6 @@
         <module>scipy</module>
         <module>gym</module>
         <module>llvm</module>
-        <module>liboqs</module>
         <module>libpostal</module>
         <module>leptonica</module>
         <module>tesseract</module>
@@ -1466,7 +1469,6 @@
         <module>scipy</module>
         <module>gym</module>
         <module>llvm</module>
-        <module>liboqs</module>
         <module>leptonica</module>
         <module>tesseract</module>
         <module>ale</module>
@@ -1531,7 +1533,6 @@
         <module>scipy</module>
         <module>gym</module>
         <module>llvm</module>
-        <module>liboqs</module>
         <module>libpostal</module>
         <module>leptonica</module>
         <module>tesseract</module>
