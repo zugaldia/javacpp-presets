@@ -17,7 +17,6 @@ import org.bytedeco.javacpp.tools.*;
                 "linux-x86",
                 "linux-x86_64"},
             // Order here is important, otherwise we can hit an "illegal forward reference" error.
-            // Refs: https://github.com/open-quantum-safe/liboqs/blob/master/Makefile.am
             include = {
                 "oqs/oqs.h"
                 // "oqs/common.h",
@@ -27,19 +26,21 @@ import org.bytedeco.javacpp.tools.*;
                 // "oqs/sha3.h",
                 // "oqs/kem.h",
                 // "oqs/kem_bike.h",
+                // "oqs/kem_frodokem.h",
                 // "oqs/kem_kyber.h",
+                // "oqs/kem_ledacrypt.h",
                 // "oqs/kem_newhope.h",
                 // "oqs/kem_ntru.h",
                 // "oqs/kem_saber.h",
-                // "oqs/kem_frodokem.h",
                 // "oqs/kem_sike.h",
+                // "oqs/kem_threebears.h",
                 // "oqs/sig.h",
                 // "oqs/sig_dilithium.h",
                 // "oqs/sig_mqdss.h",
-                // "oqs/sig_sphincs.h",
-                // // "oqs/sig_picnic.h",
+                // "oqs/sig_picnic.h",
                 // "oqs/sig_qtesla.h",
-                // "oqs/oqsconfig.h"
+                // "oqs/sig_sphincs.h",
+                // "oqs/oqsconfig.h",
             },
             link = "oqs"
         )

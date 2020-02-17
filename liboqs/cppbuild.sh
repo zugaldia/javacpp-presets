@@ -7,7 +7,7 @@ if [[ -z "$PLATFORM" ]]; then
     exit
 fi
 
-LIBOQS_VERSION=0.2.0
+LIBOQS_VERSION=master
 download https://github.com/open-quantum-safe/liboqs/archive/$LIBOQS_VERSION.zip liboqs-$LIBOQS_VERSION.zip
 download https://teskalabs.blob.core.windows.net/openssl/openssl-dev-1.0.2t-android.tar.gz openssl-dev-1.0.2t-android.tar.gz
 
@@ -20,10 +20,6 @@ tar xf ../openssl-dev-1.0.2t-android.tar.gz
 unzip -o -q ../liboqs-$LIBOQS_VERSION.zip
 cd liboqs-$LIBOQS_VERSION
 
-# Enables cross compiling
-patch -p1 < ../../../liboqs-cross.patch
-patch -p1 < ../../../liboqs-no-error.patch
-
 #
 # General build instructions: https://github.com/open-quantum-safe/liboqs/blob/master/README.md
 # Android-specific instructions: https://github.com/open-quantum-safe/liboqs/blob/master/configure-android
@@ -32,60 +28,40 @@ patch -p1 < ../../../liboqs-no-error.patch
 
 case $PLATFORM in
     android-arm)
-        export AR="$ANDROID_PREFIX-ar"
-        export RANLIB="$ANDROID_PREFIX-ranlib"
-        export CC="$ANDROID_CC $ANDROID_FLAGS"
-        export STRIP="$ANDROID_PREFIX-strip"
-        export LIBS="-ldl -lm -lc"
-        autoreconf -i
-        ./configure --prefix="$INSTALL_PATH" --host="armv7a-linux-androideabi" --with-sysroot="${ANDROID_ROOT}" --with-openssl="$INSTALL_PATH/openssl/armeabi-v7a" --disable-sig-picnic
-        make -j $MAKEJ
-        make install
+        mkdir build && cd build
+        cmake -GNinja -DCMAKE_TOOLCHAIN_FILE="$ANDROID_NDK/build/cmake/android.toolchain.cmake" -DANDROID_ABI="armeabi-v7a" -DENABLE_SIG_PICNIC=OFF -DUSE_OPENSSL=OFF -DCMAKE_INSTALL_PREFIX="$INSTALL_PATH" ..
+        ninja
+        ninja install
         ;;
     android-arm64)
-        export AR="$ANDROID_PREFIX-ar"
-        export RANLIB="$ANDROID_PREFIX-ranlib"
-        export CC="$ANDROID_CC $ANDROID_FLAGS"
-        export STRIP="$ANDROID_PREFIX-strip"
-        export LIBS="-ldl -lm -lc"
-        autoreconf -i
-        ./configure --prefix="$INSTALL_PATH" --host="aarch64-linux-android" --with-sysroot="${ANDROID_ROOT}" --with-openssl="$INSTALL_PATH/openssl/arm64-v8a" --disable-sig-picnic
-        make -j $MAKEJ
-        make install
+        mkdir build && cd build
+        cmake -GNinja -DCMAKE_TOOLCHAIN_FILE="$ANDROID_NDK/build/cmake/android.toolchain.cmake" -DANDROID_ABI="arm64-v8a" -DENABLE_SIG_PICNIC=OFF -DUSE_OPENSSL=OFF -DCMAKE_INSTALL_PREFIX="$INSTALL_PATH" ..
+        ninja
+        ninja install
         ;;
     android-x86)
-        export AR="$ANDROID_PREFIX-ar"
-        export RANLIB="$ANDROID_PREFIX-ranlib"
-        export CC="$ANDROID_CC $ANDROID_FLAGS"
-        export STRIP="$ANDROID_PREFIX-strip"
-        export LIBS="-ldl -lm -lc"
-        autoreconf -i
-        ./configure --prefix="$INSTALL_PATH" --host="i686-linux-android" --with-sysroot="${ANDROID_ROOT}" --with-openssl="$INSTALL_PATH/openssl/x86" --disable-sig-picnic
-        make -j $MAKEJ
-        make install
+        mkdir build && cd build
+        cmake -GNinja -DCMAKE_TOOLCHAIN_FILE="$ANDROID_NDK/build/cmake/android.toolchain.cmake" -DANDROID_ABI="x86" -DENABLE_SIG_PICNIC=OFF -DUSE_OPENSSL=OFF -DCMAKE_INSTALL_PREFIX="$INSTALL_PATH" ..
+        ninja
+        ninja install
         ;;
     android-x86_64)
-        export AR="$ANDROID_PREFIX-ar"
-        export RANLIB="$ANDROID_PREFIX-ranlib"
-        export CC="$ANDROID_CC $ANDROID_FLAGS"
-        export STRIP="$ANDROID_PREFIX-strip"
-        export LIBS="-ldl -lm -lc"
-        autoreconf -i
-        ./configure --prefix="$INSTALL_PATH" --host="x86_64-linux-android" --with-sysroot="${ANDROID_ROOT}" --with-openssl="$INSTALL_PATH/openssl/x86_64" --disable-sig-picnic
-        make -j $MAKEJ
-        make install
+        mkdir build && cd build
+        cmake -GNinja -DCMAKE_TOOLCHAIN_FILE="$ANDROID_NDK/build/cmake/android.toolchain.cmake" -DANDROID_ABI="x86_64" -DENABLE_SIG_PICNIC=OFF -DUSE_OPENSSL=OFF -DCMAKE_INSTALL_PREFIX="$INSTALL_PATH" ..
+        ninja
+        ninja install
         ;;
     linux-x86)
-        autoreconf -i
-        ./configure --prefix="$INSTALL_PATH"
-        make -j $MAKEJ
-        make install
+        mkdir build && cd build
+        cmake -GNinja -DCMAKE_INSTALL_PREFIX="$INSTALL_PATH" ..
+        ninja
+        ninja install
         ;;
     linux-x86_64)
-        autoreconf -i
-        ./configure --prefix="$INSTALL_PATH"
-        make -j $MAKEJ
-        make install
+        mkdir build && cd build
+        cmake -GNinja -DCMAKE_INSTALL_PREFIX="$INSTALL_PATH" ..
+        ninja
+        ninja install
         ;;
     *)
         echo "Error: Platform \"$PLATFORM\" is not supported"
